@@ -95,7 +95,7 @@ namespace WebApplication3.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Genre,Price")] Game game)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Genre,Price,ReleaseDate")] Game game)
         {
             if (id != game.Id)
             {
