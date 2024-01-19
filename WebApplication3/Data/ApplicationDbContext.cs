@@ -11,6 +11,8 @@ namespace WebApplication3.Data
             : base(options)
         {
         }
+        public DbSet<WebApplication3.Models.Developers>? Developers { get; set; }
+        public DbSet<WebApplication3.Models.Users>? Users { get; set; }
 
 
     }
