@@ -1,0 +1,71 @@
+﻿@model IEnumerable<WebApplication3.Models.SystemRequirements>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Game)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MinimumCPU)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecommendedCPU)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MinimumRAM)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecommendedRAM)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecommendedGraphics)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StorageRequired)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Game.GameId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MinimumCPU)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecommendedCPU)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MinimumRAM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecommendedRAM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecommendedGraphics)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StorageRequired)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.RequirementsId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.RequirementsId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.RequirementsId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

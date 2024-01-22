@@ -1,0 +1,64 @@
+﻿@model WebApplication3.Models.SystemRequirements
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>SystemRequirements</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="RequirementsId" />
+            <div class="form-group">
+                <label asp-for="GameId" class="control-label"></label>
+                <select asp-for="GameId" class="form-control" asp-items="ViewBag.GameId"></select>
+                <span asp-validation-for="GameId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MinimumCPU" class="control-label"></label>
+                <input asp-for="MinimumCPU" class="form-control" />
+                <span asp-validation-for="MinimumCPU" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RecommendedCPU" class="control-label"></label>
+                <input asp-for="RecommendedCPU" class="form-control" />
+                <span asp-validation-for="RecommendedCPU" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MinimumRAM" class="control-label"></label>
+                <input asp-for="MinimumRAM" class="form-control" />
+                <span asp-validation-for="MinimumRAM" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RecommendedRAM" class="control-label"></label>
+                <input asp-for="RecommendedRAM" class="form-control" />
+                <span asp-validation-for="RecommendedRAM" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RecommendedGraphics" class="control-label"></label>
+                <input asp-for="RecommendedGraphics" class="form-control" />
+                <span asp-validation-for="RecommendedGraphics" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StorageRequired" class="control-label"></label>
+                <input asp-for="StorageRequired" class="form-control" />
+                <span asp-validation-for="StorageRequired" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
