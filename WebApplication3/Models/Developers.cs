@@ -9,7 +9,8 @@ namespace WebApplication3.Models
 {
     public class Developers
     {
-        public int Id { get; set; }
+        [Key]
+        public int DeveloperId { get; set; }
 
         public string Name { get; set; }
 

@@ -37,7 +37,7 @@ namespace WebApplication3.Controllers
             }
 
             var game = await _context.Games
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.GameId == id);
             if (game == null)
             {
                 return NotFound();
@@ -97,7 +97,7 @@ namespace WebApplication3.Controllers
         [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Genre,Price,ReleaseDate")] Game game)
         {
-            if (id != game.Id)
+            if (id != game.GameId)
             {
                 return NotFound();
             }
@@ -111,7 +111,7 @@ namespace WebApplication3.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!GameExists(game.Id))
+                    if (!GameExists(game.GameId))
                     {
                         return NotFound();
                     }
@@ -135,7 +135,7 @@ namespace WebApplication3.Controllers
             }
 
             var game = await _context.Games
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.GameId == id);
             if (game == null)
             {
                 return NotFound();
@@ -166,7 +166,7 @@ namespace WebApplication3.Controllers
 
         private bool GameExists(int id)
         {
-          return (_context.Games?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Games?.Any(e => e.GameId == id)).GetValueOrDefault();
         }
     }
 }

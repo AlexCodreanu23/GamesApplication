@@ -13,6 +13,7 @@ namespace WebApplication3.Data
         }
         public DbSet<WebApplication3.Models.Developers>? Developers { get; set; }
         public DbSet<WebApplication3.Models.Users>? Users { get; set; }
+        public DbSet<WebApplication3.Models.Reviews>? Reviews { get; set; }
 
 
     }

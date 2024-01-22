@@ -36,7 +36,7 @@ namespace WebApplication3.Controllers
             }
 
             var developers = await _context.Developers
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.DeveloperId == id);
             if (developers == null)
             {
                 return NotFound();
@@ -90,7 +90,7 @@ namespace WebApplication3.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Country,Email,Salary")] Developers developers)
         {
-            if (id != developers.Id)
+            if (id != developers.DeveloperId)
             {
                 return NotFound();
             }
@@ -104,7 +104,7 @@ namespace WebApplication3.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!DevelopersExists(developers.Id))
+                    if (!DevelopersExists(developers.DeveloperId))
                     {
                         return NotFound();
                     }
@@ -127,7 +127,7 @@ namespace WebApplication3.Controllers
             }
 
             var developers = await _context.Developers
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.DeveloperId == id);
             if (developers == null)
             {
                 return NotFound();
@@ -157,7 +157,7 @@ namespace WebApplication3.Controllers
 
         private bool DevelopersExists(int id)
         {
-          return (_context.Developers?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Developers?.Any(e => e.DeveloperId == id)).GetValueOrDefault();
         }
     }
 }
