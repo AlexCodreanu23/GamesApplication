@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -14,6 +15,7 @@ namespace WebApplication3.Controllers
     public class GamesController : Controller
     {
         private readonly ApplicationDbContext _context;
+
 
         public GamesController(ApplicationDbContext context)
         {
@@ -47,7 +49,7 @@ namespace WebApplication3.Controllers
         }
 
         // GET: Games/Create
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             var viewModel = new GameViewModel();
@@ -59,7 +61,7 @@ namespace WebApplication3.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create(GameViewModel viewModel)
         {
             if (ModelState.IsValid)
@@ -73,7 +75,7 @@ namespace WebApplication3.Controllers
         }
 
         // GET: Games/Edit/5
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Games == null)
@@ -94,7 +96,7 @@ namespace WebApplication3.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Genre,Price,ReleaseDate")] Game game)
         {
             if (id != game.GameId)
@@ -126,7 +128,7 @@ namespace WebApplication3.Controllers
         }
 
         // GET: Games/Delete/5
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Games == null)
@@ -147,7 +149,7 @@ namespace WebApplication3.Controllers
         // POST: Games/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.Games == null)
